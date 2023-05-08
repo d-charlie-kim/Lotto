@@ -5,8 +5,16 @@ const Validator = {
 		return true;
 	},
 
-	validate() {
-		alert('!!!!');
+	isValidLottoNum(current, newNum) {
+		if (newNum === 0)
+			return false;
+		if (current.includes(newNum))
+			return false;
+		return true;
+	},
+
+	isValidWinningNum(winningNum, bonusNum) {
+		return true;
 	}
 }
 

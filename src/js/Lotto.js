@@ -9,13 +9,16 @@ class Lotto {
 
 	// Math.random 활용 6개 숫자 뽑기
 	// 오름차순으로 정렬해서 #numbers에 넣어준다.
+	// 새로운 번호가 기존 번호와 겹치는지 validator에서 체크
 	randomSixNum() {
 		let lotto = [];
 		for (let i = 0; i < 6; ) {
 			let newNum = Math.floor(Math.random() * 45);
-			if (newNum === 0 || lotto.includes(newNum))
+
+			if (!Validator.isValidLottoNum(lotto, newNum))
 				continue;
-			lotto.push(newNum);
+
+				lotto.push(newNum);
 			i++;
 		}
 		return(lotto.sort((a,b) => (a - b)));

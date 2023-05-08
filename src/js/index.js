@@ -9,6 +9,7 @@ const $lottoBuyButton = document.querySelector('.buy-lotto-button');
 const $inputMoney = document.querySelector('.input-money');
 
 const onModalShow = () => {
+  app.getResult();
   $modal.classList.add('open');
 }
 
@@ -21,4 +22,13 @@ $modalClose.addEventListener('click', onModalClose);
 
 $lottoBuyButton.addEventListener('click', () => {
   app.play($inputMoney.value);
+});
+
+$lottoNumbersToggleButton.addEventListener('click', () => {
+  if ($lottoNumbersToggleButton.checked) {
+    app.deleteLottoList();
+  }
+  else {
+    app.printLottoList();
+  }
 });
