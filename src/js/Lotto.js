@@ -14,11 +14,9 @@ class Lotto {
 		let lotto = [];
 		for (let i = 0; i < 6; ) {
 			let newNum = Math.floor(Math.random() * 45);
-
 			if (!Validator.isValidLottoNum(lotto, newNum))
 				continue;
-
-				lotto.push(newNum);
+			lotto.push(newNum);
 			i++;
 		}
 		return(lotto.sort((a,b) => (a - b)));
