@@ -59,7 +59,7 @@ class App {
 		$winningNumber.forEach((el) => winning.push(parseInt(el.value)));
 
 		if (!Validator.isValidWinningNum(winning, bonus))
-			return false;
+			return Display.showAlert('유효한 당첨 번호를 입력해주세요.');
 
 		const result = new Result(winning, bonus);
 		result.checkWinning(this.#lottos);

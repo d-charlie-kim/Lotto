@@ -14,6 +14,19 @@ const Validator = {
 	},
 
 	isValidWinningNum(winningNum, bonusNum) {
+		const check = winningNum;
+		check.push(bonusNum);
+
+		let i = 0;
+		for (const el of check) {
+			if (!/[0-9]/g.test(el))
+				return false;
+			if (el < 1 || el > 45)
+				return false;
+			if (check.indexOf(el) != i)
+				return false;
+			i++;
+		}
 		return true;
 	}
 }
