@@ -11,9 +11,24 @@
 .btn {
   color: white;
   background-color: rgb(146, 118, 81) !important;
+  box-shadow: 2px 2px 3px rgb(200, 183, 159);
 }
 
 .btn:hover {
   color: black;
   background-color: rgb(200, 183, 159) !important;
+}
+
+.money-button {
+  background-color: wheat;
+  border: none;
+  border-radius: 10px;
+  font-size: 12px;
+  padding: 4px 10px;
+  box-shadow: 2px 2px 3px rgb(229, 210, 174);
+  cursor: pointer;
+}
+
+.money-button:hover {
+  background-color: rgb(224, 201, 157);
 }

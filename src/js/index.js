@@ -36,7 +36,7 @@ $lottoBuyButton.addEventListener('click', () => {
 });
 
 $lottoNumbersToggleButton.addEventListener('click', () => {
-  if ($lottoNumbersToggleButton.checked) {
+  if (!$lottoNumbersToggleButton.checked) {
     app.deleteLottoList();
   }
   else {

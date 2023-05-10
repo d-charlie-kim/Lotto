@@ -11,11 +11,26 @@ const Display = {
 	},
 
 	printLottoList(lottos) {
-
+		const $ticketScreen = document.querySelector('.lotto-ticket-screen');
+		lottos.forEach((el) => {
+			const lotto = el.getLotto();
+			const screenWrap = document.createElement('div');
+			screenWrap.className = 'screen-wrap';
+			lotto.forEach((num) => {
+				const lottoNum = document.createElement('p');
+				lottoNum.textContent = num;
+				screenWrap.appendChild(lottoNum);
+			})
+			$ticketScreen.appendChild(screenWrap);
+		})
 	},
-
+	
 	deleteLottoList() {
-
+		const $ticketScreen = document.querySelector('.lotto-ticket-screen');
+		const $screenWrap = document.querySelectorAll('.screen-wrap');
+		$screenWrap.forEach((el) => {
+			$ticketScreen.removeChild(el);
+		})
 	},
 
 	printResult(result) {
