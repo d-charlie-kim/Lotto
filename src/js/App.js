@@ -16,10 +16,8 @@ class App {
 	// 1000원 단위인지 체크 후 lotto 사러 가기
 	play(money) {
 		if (!Validator.isValidMoney(money))
-			alert('금액을 1,000원 단위로 입력해주세요.');
-		else {
-			this.buyLottos(money / 1000);
-		}
+			return Display.showAlert('금액을 1,000원 단위로 입력해주세요.');
+		this.buyLottos(money / 1000);
 	}
 	
 	// 로또 사기
@@ -33,9 +31,9 @@ class App {
 
 		Display.updateLottoCount(this.#lottoCount);
 		//NOTE 로또 잘 샀는지 확인
-		for (let i = 0; i < this.#lottos.length; i++) {
-			console.log(this.#lottos[i].getLotto());
-		}
+		// for (let i = 0; i < this.#lottos.length; i++) {
+		// 	console.log(this.#lottos[i].getLotto());
+		// }
 	}
 
 	// 번호보기 토글 클릭 시 로또 번호들 출력
@@ -51,6 +49,9 @@ class App {
 	// 결과 확인하기 버튼 클릭 시 모달창에 뜰 결과 만들기
 	// 우선 입력된 당첨 번호 및 보너스 번호가 유효한지 체크
 	getResult() {
+		if (this.#lottoCount === 0)
+			return Display.showAlert('로또를 구매하고 확인해주세요!');
+
 		const $winningNumber = document.querySelectorAll('.winning-number');
 		const $bonusNumber = document.querySelector('.bonus-number');
 		const winning = [];
@@ -58,11 +59,37 @@ class App {
 		$winningNumber.forEach((el) => winning.push(parseInt(el.value)));
 
 		if (!Validator.isValidWinningNum(winning, bonus))
-			return ;
+			return false;
 
 		const result = new Result(winning, bonus);
 		result.checkWinning(this.#lottos);
 		Display.printResult(result);
+		return true;
+	}
+
+	makeRandomWinningNumber() {
+		const sevenNumbers = [];
+		for (let i = 0; i < 7; ) {
+			let newNum = Math.floor(Math.random() * 45);
+			if (!Validator.isValidLottoNum(sevenNumbers, newNum))
+				continue;
+			sevenNumbers.push(newNum);
+			i++;
+		}
+		const bonus = sevenNumbers.pop();
+		const winning = sevenNumbers;
+		Display.putWinningNumber(winning, bonus);
+	}
+
+	putMoney(input) {
+		const money = input.split(',').join('');
+		Display.putMoneyInput(money);
+	}
+
+	clear() {
+		Display.screenClear();
+		this.#lottoCount = 0;
+		this.#lottos = [];
 	}
 }
 

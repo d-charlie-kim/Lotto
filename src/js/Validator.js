@@ -1,6 +1,6 @@
 const Validator = {
 	isValidMoney(money) {
-		if (money % 1000 !== 0)
+		if (money === '' || money % 1000 !== 0)
 			return false;
 		return true;
 	},
