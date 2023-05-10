@@ -1,8 +1,10 @@
 const Validator = {
 	isValidMoney(money) {
 		if (money === '' || money % 1000 !== 0)
-			return false;
-		return true;
+			return 1;
+		else if (money > 10000000)
+			return 2;
+		return 0;
 	},
 
 	isValidLottoNum(current, newNum) {

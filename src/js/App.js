@@ -15,8 +15,14 @@ class App {
 	// 처음 금액을 입력 받으면 play
 	// 1000원 단위인지 체크 후 lotto 사러 가기
 	play(money) {
-		if (!Validator.isValidMoney(money))
+		const invalid = Validator.isValidMoney(money);
+		if (invalid === 1)
 			return Display.showAlert('금액을 1,000원 단위로 입력해주세요.');
+		else if (invalid === 2)
+			return Display.showAlert('최대 구매 가능 금액은 10,000,000원 입니다.');
+		else if ((money / 1000) + this.#lottoCount > 10000)
+			return Display.showAlert('최대 구매 가능 금액은 10,000,000원 입니다.');
+
 		this.buyLottos(money / 1000);
 	}
 	
