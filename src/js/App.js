@@ -19,9 +19,9 @@ class App {
 		if (invalid === 1)
 			return Display.showAlert('금액을 1,000원 단위로 입력해주세요.');
 		else if (invalid === 2)
-			return Display.showAlert('최대 구매 가능 금액은 10,000,000원 입니다.');
-		else if ((money / 1000) + this.#lottoCount > 10000)
-			return Display.showAlert('최대 구매 가능 금액은 10,000,000원 입니다.');
+			return Display.showAlert('최대 구매 가능 금액은 1,000,000원 입니다.');
+		else if ((money / 1000) + this.#lottoCount > 1000)
+			return Display.showAlert('최대 구매 가능 금액은 1,000,000원 입니다.');
 
 		this.buyLottos(money / 1000);
 	}
