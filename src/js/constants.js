@@ -14,4 +14,4 @@ const PRIZE = {
 	FIFTH: 5000,
 };
 
-exports = {PLACE, PRIZE};
+export {PLACE, PRIZE};

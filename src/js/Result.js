@@ -1,3 +1,5 @@
+import {PLACE, PRIZE} from './constants.js';
+
 class Result {
 	#winningNum;
 	#bonusNum;
@@ -22,20 +24,20 @@ class Result {
 	calculatePrize() {
 		for (let i = 3; i < this.#matchCount.length; i++) {
 			switch(i) {
-				case 3:
-					this.#prize += (this.#matchCount[i] * 5000);
+				case PLACE.FIFTH:
+					this.#prize += (this.#matchCount[i] * PRIZE.FIFTH);
 					continue;
-				case 4:
-					this.#prize += (this.#matchCount[i] * 50000);
+				case PLACE.FOURTH:
+					this.#prize += (this.#matchCount[i] * PRIZE.FOURTH);
 					continue;
-				case 5:
-					this.#prize += (this.#matchCount[i] * 1500000);
+				case PLACE.THIRD:
+					this.#prize += (this.#matchCount[i] * PRIZE.THIRD);
 					continue;
-				case 6:
-					this.#prize += (this.#matchCount[i] * 30000000);
+				case PLACE.SECOND:
+					this.#prize += (this.#matchCount[i] * PRIZE.SECOND);
 					continue;
-				case 7:
-					this.#prize += (this.#matchCount[i] * 2000000000);
+				case PLACE.FIRST:
+					this.#prize += (this.#matchCount[i] * PRIZE.FIRST);
 					continue;
 			}
 		}
