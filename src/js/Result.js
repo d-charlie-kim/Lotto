@@ -16,7 +16,7 @@ class Result {
 	calculateRate(lottoCount) {
 		const consume = lottoCount * 1000;
 		const earn = this.#prize;
-		this.#rate = ((earn - consume) / consume).toFixed(2);
+		this.#rate = ((earn - consume) / consume * 100).toFixed(2);
 	}
 
 	calculatePrize() {
