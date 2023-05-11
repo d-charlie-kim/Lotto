@@ -2,7 +2,11 @@
 const Display = {
 	putMoneyInput(money) {
 		const $inputMoney = document.querySelector('.input-money');
-		$inputMoney.value = money;
+		let current = $inputMoney.value;
+		if(current)
+			$inputMoney.value = parseInt(current) + parseInt(money);
+		else
+			$inputMoney.value = money;
 	},
 
 	updateLottoCount(count) {
@@ -11,7 +15,13 @@ const Display = {
 	},
 
 	printLottoList(lottos) {
+		const $lottoNumbersToggleButton = document.querySelector('.lotto-numbers-toggle-button');
 		const $ticketScreen = document.querySelector('.lotto-ticket-screen');
+
+		if (lottos.length === 0) {
+			$lottoNumbersToggleButton.checked = false;
+			return Display.showAlert('로또를 구매하고 확인해주세요!');
+		}
 		lottos.forEach((el) => {
 			const lotto = el.getLotto();
 			const screenWrap = document.createElement('div');
@@ -60,13 +70,18 @@ const Display = {
 	},
 
 	screenClear() {
+		const $inputMoney = document.querySelector('.input-money');
 		const $lottoResultScreen = document.querySelectorAll('.lotto-result');
 		const $lottoResultRate = document.querySelector('.lotto-result-rate');
+		const $lottoNumbersToggleButton = document.querySelector('.lotto-numbers-toggle-button');
 
 		this.updateLottoCount(0);
 		this.putWinningNumber(['','','','','',''], '');
+		this.deleteLottoList();
 		$lottoResultRate.textContent = `당신의 총 수익률은 0%입니다.`;
 		$lottoResultScreen.forEach((el) => el.textContent = 0);
+		$lottoNumbersToggleButton.checked = false;
+		$inputMoney.value = '';
 	}
 }
 
