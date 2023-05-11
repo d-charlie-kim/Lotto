@@ -14,9 +14,14 @@
 
 ## 🔥 Projects!
 
-<p align="middle">
-  <img width="400" src="./src/images/lotto_ui.png">
-</p>
+
+
+<div height="400px" align="middle">
+
+  https://github.com/d-charlie-kim/Lotto/assets/74645799/0678c45e-8299-4f6b-94e7-34b3cb6b91a5
+
+</div>
+
 
 ### 🎯 step1 구입 기능
 
